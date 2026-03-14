@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RouteMate | Community Mobility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container" id="mainApp">
+        <header>
+            <div class="brand">
+                <h1>🚗 ROUTEMATE</h1>
+                <span class="version">Bengaluru Community Ride Share</span>
+            </div>
+            <select id="campusHub" class="hub-selector">
+                <option value="REVA">REVA University Hub</option>
+                <option value="RVCE">RV College Hub</option>
+                <option value="MANYATA">Manyata Tech Park</option>
+            </select>
+        </header>
+
+        <div class="live-pulse">
+            <span class="dot"></span> <span id="liveWaiters">Scanning local hub...</span>
+        </div>
+
+        <section class="input-section">
+            <div class="row">
+                <div class="field">
+                    <label class="ui-label">Pickup Spot</label>
+                    <select id="pickupSpot" onchange="updatePulse()">
+                        <option value="College Main Gate">College Main Gate</option>
+                        <option value="Hebbal Bus Stop">Hebbal Bus Stop</option>
+                        <option value="PG Block">PG Block / Hostel</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label class="ui-label">Time</label>
+                    <input type="time" id="depTime" value="08:30">
+                </div>
+            </div>
+
+            <label class="ui-label">Destination</label>
+            <input type="text" id="endLoc" placeholder="e.g. Majestic / Rampura">
+            
+            <div class="select-group">
+                <div class="field">
+                    <label class="ui-label">Mode</label>
+                    <select id="vehicleType">
+                        <option value="🛺 Auto Share">Auto Share</option>
+                        <option value="🚗 Carpool">Carpool</option>
+                        <option value="🏍️ Bike Lift">Bike Lift</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label class="ui-label">Group Size</label>
+                    <input type="number" id="groupSize" value="3" min="2">
+                </div>
+            </div>
+
+            <label class="ui-label">Est. Total Fare (₹)</label>
+            <input type="number" id="totalFare" placeholder="Enter Amount">
+            
+            <button id="postBtn" class="main-btn">Create Commute Group</button>
+        </section>
+
+        <section class="ride-feed">
+            <h2 class="feed-title">Active Commute Groups</h2>
+            <div id="rideList"></div>
+        </section>
+
+        <button id="sosBtn" class="sos-btn">SOS</button>
+
+        <div id="handshakeModal" class="modal">
+            <div class="modal-content">
+                <h3>🤝 Visual Handshake</h3>
+                <p>Match this color with your partner</p>
+                <div class="color-sync" id="syncCircle"></div>
+                <div class="id-badge">VERIFIED ID: REVA-STARK-2026</div>
+                <button onclick="closeHandshake()" class="main-btn">Identity Confirmed</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
